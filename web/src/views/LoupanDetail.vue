@@ -99,14 +99,14 @@
                   <Info class="w-5 h-5 text-[var(--color-primary)]" />基本信息
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  <InfoItem label="楼盘地址" :value="loupan.projectAddress" />
-                  <InfoItem label="售楼部地址" :value="loupan.salesAddress" />
-                  <InfoItem label="交房时间" :value="loupan.deliveryDate" />
-                  <InfoItem label="楼盘类型" :value="['','住宅','公寓','商铺','别墅'][loupan.houseType]" />
-                  <InfoItem label="装修情况" :value="['','精装','毛坯','简装'][loupan.decorateType]" />
-                  <InfoItem label="产权年限" :value="loupan.propertyRightYear+'年'" />
-                  <InfoItem label="户型面积" :value="loupan.areaMin+'-'+loupan.areaMax+'㎡'" />
-                  <InfoItem label="层高" :value="loupan.floorHeightMin+'-'+loupan.floorHeightMax+'m'" v-if="loupan.floorHeightMin||loupan.floorHeightMax" />
+                  <div v-if="loupan.projectAddress" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">楼盘地址</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.projectAddress }}</span></div>
+                  <div v-if="loupan.salesAddress" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">售楼部地址</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.salesAddress }}</span></div>
+                  <div v-if="loupan.deliveryDate" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">交房时间</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.deliveryDate }}</span></div>
+                  <div v-if="['','住宅','公寓','商铺','别墅'][loupan.houseType]" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">楼盘类型</span><span class="text-[var(--color-text-primary)] font-medium">{{ ['','住宅','公寓','商铺','别墅'][loupan.houseType] }}</span></div>
+                  <div v-if="['','精装','毛坯','简装'][loupan.decorateType]" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">装修情况</span><span class="text-[var(--color-text-primary)] font-medium">{{ ['','精装','毛坯','简装'][loupan.decorateType] }}</span></div>
+                  <div v-if="loupan.propertyRightYear" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">产权年限</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.propertyRightYear }}年</span></div>
+                  <div v-if="loupan.areaMin||loupan.areaMax" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">户型面积</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.areaMin }}-{{ loupan.areaMax }}㎡</span></div>
+                  <div v-if="loupan.floorHeightMin||loupan.floorHeightMax" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">层高</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.floorHeightMin }}-{{ loupan.floorHeightMax }}m</span></div>
                 </div>
               </div>
 
@@ -116,14 +116,14 @@
                   <Building2 class="w-5 h-5 text-[var(--color-primary)]" />建筑指标
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  <InfoItem label="总建面积" :value="fmtNum(loupan.buildArea)+'㎡'" />
-                  <InfoItem label="占地面积" :value="fmtNum(loupan.landArea)+'㎡'" />
-                  <InfoItem label="容积率" :value="loupan.plotRatio" />
-                  <InfoItem label="绿地率" :value="loupan.greenRate+'%'" />
-                  <InfoItem label="总户数" :value="loupan.houseTotal+'户'" />
-                  <InfoItem label="楼栋总数" :value="loupan.buildingTotal+'栋'" />
-                  <InfoItem label="楼层范围" :value="loupan.floorMin+'-'+loupan.floorMax+'层'" v-if="loupan.floorMin||loupan.floorMax" />
-                  <InfoItem label="自持率" :value="loupan.selfHoldRate+'%'" v-if="loupan.selfHoldRate" />
+                  <div v-if="loupan.buildArea" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">总建面积</span><span class="text-[var(--color-text-primary)] font-medium">{{ fmtNum(loupan.buildArea) }}㎡</span></div>
+                  <div v-if="loupan.landArea" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">占地面积</span><span class="text-[var(--color-text-primary)] font-medium">{{ fmtNum(loupan.landArea) }}㎡</span></div>
+                  <div v-if="loupan.plotRatio" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">容积率</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.plotRatio }}</span></div>
+                  <div v-if="loupan.greenRate" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">绿地率</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.greenRate }}%</span></div>
+                  <div v-if="loupan.houseTotal" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">总户数</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.houseTotal }}户</span></div>
+                  <div v-if="loupan.buildingTotal" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">楼栋总数</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.buildingTotal }}栋</span></div>
+                  <div v-if="loupan.floorMin||loupan.floorMax" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">楼层范围</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.floorMin }}-{{ loupan.floorMax }}层</span></div>
+                  <div v-if="loupan.selfHoldRate" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">自持率</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.selfHoldRate }}%</span></div>
                 </div>
               </div>
 
@@ -133,14 +133,14 @@
                   <Shield class="w-5 h-5 text-[var(--color-primary)]" />开发信息
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  <InfoItem label="开发公司" :value="loupan.projectCompany" />
-                  <InfoItem label="开发品牌" :value="loupan.brandList" />
-                  <InfoItem label="拿地总价" :value="loupan.landPrice+'万'" />
-                  <InfoItem label="楼面单价" :value="loupan.landUnitPrice+'元/㎡'" />
-                  <InfoItem label="拿地日期" :value="loupan.landBuyDate" />
-                  <InfoItem label="物业公司" :value="loupan.propertyCompany" />
-                  <InfoItem label="小高/洋房物业费" :value="loupan.propertyFeeHigh+'元/㎡/月'" v-if="loupan.propertyFeeHigh" />
-                  <InfoItem label="排屋别墅物业费" :value="loupan.propertyFeeVilla+'元/㎡/月'" v-if="loupan.propertyFeeVilla" />
+                  <div v-if="loupan.projectCompany" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">开发公司</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.projectCompany }}</span></div>
+                  <div v-if="loupan.brandList" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">开发品牌</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.brandList }}</span></div>
+                  <div v-if="loupan.landPrice" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">拿地总价</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.landPrice }}万</span></div>
+                  <div v-if="loupan.landUnitPrice" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">楼面单价</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.landUnitPrice }}元/㎡</span></div>
+                  <div v-if="loupan.landBuyDate" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">拿地日期</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.landBuyDate }}</span></div>
+                  <div v-if="loupan.propertyCompany" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">物业公司</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.propertyCompany }}</span></div>
+                  <div v-if="loupan.propertyFeeHigh" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">小高/洋房物业费</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.propertyFeeHigh }}元/㎡/月</span></div>
+                  <div v-if="loupan.propertyFeeVilla" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">排屋别墅物业费</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.propertyFeeVilla }}元/㎡/月</span></div>
                 </div>
               </div>
 
@@ -150,10 +150,10 @@
                   <Car class="w-5 h-5 text-[var(--color-primary)]" />车位信息
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <InfoItem label="总车位" :value="loupan.parkTotal+'个'" />
-                  <InfoItem label="可售车位" :value="loupan.parkSellNum+'个'" />
-                  <InfoItem label="车位配比" :value="loupan.parkRatio" />
-                  <InfoItem label="人车分流" :value="loupan.peopleCarSeparate===1?'是':'否'" />
+                  <div v-if="loupan.parkTotal" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">总车位</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.parkTotal }}个</span></div>
+                  <div v-if="loupan.parkSellNum" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">可售车位</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.parkSellNum }}个</span></div>
+                  <div v-if="loupan.parkRatio" class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">车位配比</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.parkRatio }}</span></div>
+                  <div class="text-sm"><span class="text-[var(--color-text-tertiary)] block mb-0.5">人车分流</span><span class="text-[var(--color-text-primary)] font-medium">{{ loupan.peopleCarSeparate===1?'是':'否' }}</span></div>
                 </div>
               </div>
 
@@ -175,12 +175,30 @@
                   <Sparkles class="w-5 h-5 text-[var(--color-primary)]" />配套设施
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <SupportCard v-if="loupan.eduSupport" title="教育" :items="loupan.eduSupport" icon="graduation-cap" />
-                  <SupportCard v-if="loupan.trafficSupport" title="交通" :items="loupan.trafficSupport" icon="train" />
-                  <SupportCard v-if="loupan.medicalSupport" title="医疗" :items="loupan.medicalSupport" icon="stethoscope" />
-                  <SupportCard v-if="loupan.businessSupport" title="商业" :items="loupan.businessSupport" icon="shopping-bag" />
-                  <SupportCard v-if="loupan.viewSupport" title="景观" :items="loupan.viewSupport" icon="trees" />
-                  <SupportCard v-if="loupan.communityFacility" title="小区配套" :items="loupan.communityFacility" icon="home" />
+                  <div v-if="splitItems(loupan.eduSupport).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">教育</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.eduSupport)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
+                  <div v-if="splitItems(loupan.trafficSupport).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">交通</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.trafficSupport)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
+                  <div v-if="splitItems(loupan.medicalSupport).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">医疗</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.medicalSupport)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
+                  <div v-if="splitItems(loupan.businessSupport).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">商业</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.businessSupport)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
+                  <div v-if="splitItems(loupan.viewSupport).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">景观</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.viewSupport)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
+                  <div v-if="splitItems(loupan.communityFacility).length" class="bg-gray-50 rounded-xl p-4">
+                    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">小区配套</h4>
+                    <ul class="space-y-1"><li v-for="(it,i) in splitItems(loupan.communityFacility)" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li></ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -353,28 +371,10 @@ async function initMap() {
 }
 
 onMounted(fetchDetail)
-</script>
 
-<!-- 局部组件：信息项 和 配套设施卡片 -->
-<script>
-const InfoItem = {
-  props: ['label', 'value'],
-  template: `<div v-if="value" class="text-sm">
-    <span class="text-[var(--color-text-tertiary)] block mb-0.5">{{ label }}</span>
-    <span class="text-[var(--color-text-primary)] font-medium">{{ value }}</span>
-  </div>`
-}
+/** 信息项渲染辅助 */
+function show(val) { return val !== null && val !== undefined && val !== '' && val !== 0 }
 
-const SupportCard = {
-  props: ['title', 'items', 'icon'],
-  computed: {
-    list() { return this.items.split(/[,，、]/).filter(Boolean) }
-  },
-  template: `<div v-if="list.length" class="bg-gray-50 rounded-xl p-4">
-    <h4 class="text-sm font-medium text-[var(--color-text-primary)] mb-2">{{ title }}</h4>
-    <ul class="space-y-1">
-      <li v-for="(it,i) in list" :key="i" class="text-xs text-[var(--color-text-secondary)] before:content-['•'] before:mr-1.5 before:text-[var(--color-primary)]">{{ it.trim() }}</li>
-    </ul>
-  </div>`
-}
+/** 拆分配套设施文本 */
+function splitItems(str) { return (str || '').split(/[,，、]/).filter(Boolean) }
 </script>

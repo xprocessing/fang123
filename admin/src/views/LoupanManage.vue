@@ -127,7 +127,10 @@
               <t-form-item label="楼面价(元/㎡)"><t-input-number v-model="form.landUnitPrice" :min="0" /></t-form-item>
               <t-form-item label="拿地日期"><t-date-picker v-model="form.landBuyDate" /></t-form-item>
             </div>
-            <t-form-item label="关联土拍地块ID"><t-input-number v-model="form.landId" :min="0" /></t-form-item>
+            <div class="grid grid-cols-2 gap-3">
+              <t-form-item label="宗地编号"><t-input v-model="form.landNo" /></t-form-item>
+              <t-form-item label="关联土拍地块ID"><t-input-number v-model="form.landId" :min="0" /></t-form-item>
+            </div>
             <t-form-item label="物业公司"><t-input v-model="form.propertyCompany" /></t-form-item>
             <div class="grid grid-cols-2 gap-3">
               <t-form-item label="小高/洋房物业费"><t-input-number v-model="form.propertyFeeHigh" :min="0" :decimalPlaces="2" /></t-form-item>
@@ -251,7 +254,7 @@ const fieldLabels = {
   houseTotal:'总户数', greenRate:'绿地率(%)', plotRatio:'容积率',
   propertyCompany:'物业公司', deliveryDate:'交房时间', salesTel:'售楼电话',
   propertyRightYear:'产权年限', minTotalPrice:'最低总价(万)', maxTotalPrice:'最高总价(万)',
-  priceTag:'价格标签', landPrice:'拿地总价(万)', landUnitPrice:'楼面价(元/㎡)',
+  priceTag:'价格标签', landNo:'宗地编号', landPrice:'拿地总价(万)', landUnitPrice:'楼面价(元/㎡)',
   propertyFeeHigh:'小高/洋房物业费', propertyFeeVilla:'别墅物业费',
   parkTotal:'总车位', parkSellNum:'可售车位', parkRatio:'车位配比',
   facadeMaterial:'外立面材料', selfHoldRate:'自持率(%)',
@@ -354,7 +357,7 @@ const initForm = () => ({
   propertyCompany:'',parkTotal:0,parkSellNum:0,parkRatio:'',facadeMaterial:'',selfHoldRate:0,
   buildArea:0,landArea:0,houseTotal:0,plotRatio:0,greenRate:0,projectCompany:'',brandList:'',
   landPrice:0,landUnitPrice:0,landBuyDate:'',
-  eduSupport:'',trafficSupport:'',medicalSupport:'',businessSupport:'',viewSupport:'',sort:0,landId:null
+  eduSupport:'',trafficSupport:'',medicalSupport:'',businessSupport:'',viewSupport:'',sort:0,landNo:'',landId:null
 })
 const form = reactive(initForm())
 
@@ -363,6 +366,8 @@ const cols = [
   {colKey:'projectName',title:'楼盘名称',width:140,ellipsis:true},
   {colKey:'district',title:'行政区',width:80},
   {colKey:'plate',title:'板块',width:80},
+  {colKey:'landNo',title:'宗地编号',width:100,ellipsis:true},
+  {colKey:'landId',title:'土拍地块ID',width:90},
   {colKey:'salesStatus',title:'状态',width:80},
   {colKey:'avgUnitPrice',title:'均价',width:90},
   {colKey:'houseType',title:'类型',width:70},

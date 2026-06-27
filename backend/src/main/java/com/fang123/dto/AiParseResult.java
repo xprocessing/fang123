@@ -47,6 +47,7 @@ public class AiParseResult {
         private Integer minTotalPrice;
         private Integer maxTotalPrice;
         private String priceTag;
+        private String landNo;
         private Long landPrice;
         private Integer landUnitPrice;
         private BigDecimal propertyFeeHigh;

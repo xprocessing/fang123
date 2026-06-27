@@ -353,6 +353,7 @@ INSERT INTO `loupan_tupai_land` (
 CREATE TABLE IF NOT EXISTS `loupan` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '楼盘主键ID',
   `land_id` bigint DEFAULT NULL COMMENT '对应土拍地块ID，关联loupan_tupai_land.id',
+  `land_no` varchar(100) NOT NULL COMMENT '宗地编号，唯一',
   `cover_image` varchar(500) DEFAULT '' COMMENT '封面图URL',
   `project_name` varchar(100) NOT NULL COMMENT '楼盘名称',
   `short_name` varchar(50) DEFAULT '' COMMENT '楼盘简称',

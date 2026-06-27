@@ -14,6 +14,8 @@ public class Loupan implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     private Long landId;
+    /** 宗地编号 */
+    private String landNo;
     private String coverImage;
     private String projectName;
     private String shortName;

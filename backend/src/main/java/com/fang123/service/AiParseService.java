@@ -66,6 +66,7 @@ public class AiParseService {
               "minTotalPrice": "最低总价，万元，纯数字",
               "maxTotalPrice": "最高总价，万元，纯数字",
               "priceTag": "价格标签，如改善、刚需",
+              "landNo": "宗地编号",
               "landPrice": "拿地总价，万元，纯数字",
               "landUnitPrice": "楼面价，元/㎡，纯数字",
               "propertyFeeHigh": "小高/洋房物业费，元/㎡·月，纯数字",
